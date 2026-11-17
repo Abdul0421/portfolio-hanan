@@ -7,8 +7,8 @@ import { Lock, Mail, ArrowRight, ShieldCheck, AlertCircle, Loader2, Sparkles } f
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("admin@afhanan.dev");
-  const [password, setPassword] = useState("AdminHanan2026!");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -85,7 +85,7 @@ export default function AdminLoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@afhanan.dev"
+                  placeholder="nama@email.com"
                   className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-100 placeholder:text-slate-500 transition-colors"
                 />
               </div>
@@ -106,16 +106,6 @@ export default function AdminLoginPage() {
                   className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-100 placeholder:text-slate-500 transition-colors"
                 />
               </div>
-            </div>
-
-            {/* Quick Demo Credentials Info */}
-            <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 text-[11px] text-slate-400 space-y-1">
-              <div className="flex items-center gap-1.5 text-emerald-400 font-semibold font-mono">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Kredensial Default:</span>
-              </div>
-              <p>Email: <code className="text-slate-200">admin@afhanan.dev</code></p>
-              <p>Password: <code className="text-slate-200">AdminHanan2026!</code></p>
             </div>
 
             <button
