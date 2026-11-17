@@ -21,37 +21,59 @@ import {
 
 const DB_DIR = path.join(process.cwd(), "data");
 const DB_FILE = path.join(DB_DIR, "db.json");
+const TMP_FILE = path.join("/tmp", "portfolio_db.json");
+
+let inMemoryDb: DatabaseSchema | null = null;
 
 function ensureDbFile(): DatabaseSchema {
-  if (!fs.existsSync(DB_DIR)) {
-    fs.mkdirSync(DB_DIR, { recursive: true });
+  if (inMemoryDb) {
+    return inMemoryDb;
   }
 
-  if (!fs.existsSync(DB_FILE)) {
-    const initialData = seedData as unknown as DatabaseSchema;
-    fs.writeFileSync(DB_FILE, JSON.stringify(initialData, null, 2), "utf-8");
-    return initialData;
+  // Check /tmp/portfolio_db.json first (if previously updated on serverless)
+  try {
+    if (fs.existsSync(TMP_FILE)) {
+      const raw = fs.readFileSync(TMP_FILE, "utf-8");
+      inMemoryDb = JSON.parse(raw) as DatabaseSchema;
+      return inMemoryDb;
+    }
+  } catch (err) {
+    // ignore
   }
 
   try {
-    const raw = fs.readFileSync(DB_FILE, "utf-8");
-    const parsed = JSON.parse(raw) as DatabaseSchema;
-    return parsed;
+    if (fs.existsSync(DB_FILE)) {
+      const raw = fs.readFileSync(DB_FILE, "utf-8");
+      inMemoryDb = JSON.parse(raw) as DatabaseSchema;
+      return inMemoryDb;
+    }
   } catch (err) {
-    console.error("Failed to parse db.json, resetting to seed data:", err);
-    const initialData = seedData as unknown as DatabaseSchema;
-    fs.writeFileSync(DB_FILE, JSON.stringify(initialData, null, 2), "utf-8");
-    return initialData;
+    console.error("Failed to parse db.json:", err);
   }
+
+  const initialData = seedData as unknown as DatabaseSchema;
+  inMemoryDb = initialData;
+  return initialData;
 }
 
 function saveDb(data: DatabaseSchema): void {
-  if (!fs.existsSync(DB_DIR)) {
-    fs.mkdirSync(DB_DIR, { recursive: true });
+  inMemoryDb = data;
+
+  try {
+    if (!fs.existsSync(DB_DIR)) {
+      fs.mkdirSync(DB_DIR, { recursive: true });
+    }
+    const tempFile = `${DB_FILE}.tmp`;
+    fs.writeFileSync(tempFile, JSON.stringify(data, null, 2), "utf-8");
+    fs.renameSync(tempFile, DB_FILE);
+  } catch (fsErr: unknown) {
+    // Serverless (Netlify / Vercel) read-only filesystem fallback
+    try {
+      fs.writeFileSync(TMP_FILE, JSON.stringify(data, null, 2), "utf-8");
+    } catch (tmpErr) {
+      console.warn("Could not write to /tmp, retained in memory:", tmpErr);
+    }
   }
-  const tempFile = `${DB_FILE}.tmp`;
-  fs.writeFileSync(tempFile, JSON.stringify(data, null, 2), "utf-8");
-  fs.renameSync(tempFile, DB_FILE);
 }
 
 export const db = {
