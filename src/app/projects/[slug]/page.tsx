@@ -7,11 +7,15 @@ import { db } from "@/lib/db";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function ProjectDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  await db.syncCloud();
   const { slug } = await params;
   const project = db.getProjectBySlug(slug) || db.getProjectById(slug);
 
