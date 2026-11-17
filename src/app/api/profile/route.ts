@@ -3,6 +3,7 @@ import { getAdminSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 
 export async function GET() {
+  await db.syncCloud();
   const profile = db.getProfile();
   return NextResponse.json({ success: true, profile });
 }
@@ -14,6 +15,7 @@ export async function PUT(req: NextRequest) {
   }
 
   try {
+    await db.syncCloud();
     const body = await req.json();
     const updated = db.updateProfile(body);
     return NextResponse.json({ success: true, profile: updated });

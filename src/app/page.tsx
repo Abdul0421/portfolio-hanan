@@ -11,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 export default async function HomePage() {
+  await db.syncCloud();
   const profile = db.getProfile();
   const projects = db.getProjects(false);
   const projectCategories = db.getProjectCategories();

@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { getAdminSession } from "@/lib/auth";
+import { db } from "@/lib/db";
 import AdminSidebar from "./AdminSidebar";
 
 export default async function AdminDashboardLayout({
@@ -12,6 +13,8 @@ export default async function AdminDashboardLayout({
   if (!session) {
     redirect("/admin/login");
   }
+
+  await db.syncCloud();
 
   return (
     <div className="dark min-h-screen bg-[#090d16] text-slate-100 flex flex-col md:flex-row antialiased selection:bg-emerald-500/25 selection:text-emerald-300">

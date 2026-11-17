@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import { getAdminSession } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 
 const ALLOWED_MIME_TYPES = [
   // Images
@@ -65,19 +66,46 @@ export async function POST(req: NextRequest) {
 
     let publicUrl = `/uploads/${uniqueFilename}`;
 
-    try {
-      const uploadDir = path.join(process.cwd(), "public", "uploads");
-      if (!fs.existsSync(uploadDir)) {
-        fs.mkdirSync(uploadDir, { recursive: true });
+    // 1. Try Supabase Storage if configured (Cloud storage for production)
+    if (isSupabaseConfigured && supabase) {
+      try {
+        const bucketName = "portfolio-media";
+        const { error: uploadErr } = await supabase.storage
+          .from(bucketName)
+          .upload(uniqueFilename, buffer, {
+            contentType: file.type,
+            upsert: true,
+          });
+
+        if (!uploadErr) {
+          const { data: publicUrlData } = supabase.storage
+            .from(bucketName)
+            .getPublicUrl(uniqueFilename);
+          publicUrl = publicUrlData.publicUrl;
+        } else {
+          console.warn("Supabase storage upload error:", uploadErr.message);
+        }
+      } catch (sbErr) {
+        console.warn("Supabase storage error:", sbErr);
       }
-      const filePath = path.join(uploadDir, uniqueFilename);
-      fs.writeFileSync(filePath, buffer);
-    } catch (fsErr: unknown) {
-      // Netlify / Vercel Serverless environment has a read-only filesystem (/var/task)
-      const errMsg = fsErr instanceof Error ? fsErr.message : String(fsErr);
-      console.warn("Read-only filesystem detected on serverless, falling back to Data URI:", errMsg);
-      const base64 = buffer.toString("base64");
-      publicUrl = `data:${file.type};base64,${base64}`;
+    }
+
+    // 2. Local Filesystem (Localhost development)
+    if (publicUrl.startsWith("/uploads/")) {
+      try {
+        const uploadDir = path.join(process.cwd(), "public", "uploads");
+        if (!fs.existsSync(uploadDir)) {
+          fs.mkdirSync(uploadDir, { recursive: true });
+        }
+        const filePath = path.join(uploadDir, uniqueFilename);
+        fs.writeFileSync(filePath, buffer);
+      } catch (fsErr: unknown) {
+        // 3. Fallback to base64 Data URI if serverless filesystem is read-only
+        const errMsg = fsErr instanceof Error ? fsErr.message : String(fsErr);
+        console.warn("Read-only filesystem detected, fallback to Data URI:", errMsg);
+        const base64 = buffer.toString("base64");
+        publicUrl = `data:${file.type};base64,${base64}`;
+      }
     }
 
     // Determine type category

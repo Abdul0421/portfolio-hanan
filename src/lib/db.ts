@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import seedData from "@/data/seed.json";
+import { supabase, isSupabaseConfigured } from "./supabase";
 import {
   DatabaseSchema,
   Profile,
@@ -56,8 +57,47 @@ function ensureDbFile(): DatabaseSchema {
   return initialData;
 }
 
+async function syncFromSupabase(): Promise<DatabaseSchema> {
+  if (isSupabaseConfigured && supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("portfolio_state")
+        .select("data")
+        .eq("id", "main")
+        .single();
+
+      if (!error && data?.data) {
+        inMemoryDb = data.data as DatabaseSchema;
+        return inMemoryDb;
+      } else if (error && (error.code === "PGRST116" || error.message.includes("0 rows"))) {
+        const initial = ensureDbFile();
+        await supabase
+          .from("portfolio_state")
+          .upsert({ id: "main", data: initial, updated_at: new Date().toISOString() });
+        return initial;
+      }
+    } catch (e) {
+      console.warn("Supabase sync warning:", e);
+    }
+  }
+  return ensureDbFile();
+}
+
 function saveDb(data: DatabaseSchema): void {
   inMemoryDb = data;
+
+  if (isSupabaseConfigured && supabase) {
+    (async () => {
+      try {
+        const { error } = await supabase
+          .from("portfolio_state")
+          .upsert({ id: "main", data, updated_at: new Date().toISOString() });
+        if (error) console.warn("Supabase cloud upsert warning:", error.message);
+      } catch (err: unknown) {
+        console.warn("Supabase cloud save error:", err);
+      }
+    })();
+  }
 
   try {
     if (!fs.existsSync(DB_DIR)) {
@@ -77,6 +117,10 @@ function saveDb(data: DatabaseSchema): void {
 }
 
 export const db = {
+  syncCloud(): Promise<DatabaseSchema> {
+    return syncFromSupabase();
+  },
+
   getRaw(): DatabaseSchema {
     return ensureDbFile();
   },
