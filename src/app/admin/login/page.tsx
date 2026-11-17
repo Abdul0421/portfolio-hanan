@@ -1,0 +1,155 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Lock, Mail, ArrowRight, ShieldCheck, AlertCircle, Loader2, Sparkles } from "lucide-react";
+
+export default function AdminLoginPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState("admin@afhanan.dev");
+  const [password, setPassword] = useState("AdminHanan2026!");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Gagal melakukan autentikasi.");
+      }
+
+      router.push("/admin/dashboard");
+      router.refresh();
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Terjadi kesalahan saat login.";
+      setError(msg);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[#0a0f18] text-slate-100 bg-grid-pattern relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="w-full max-w-md relative z-10">
+        
+        {/* Header Logo */}
+        <div className="text-center mb-8">
+          <Link href="/" className="inline-flex items-center gap-2.5 group mb-3">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 via-sky-500 to-indigo-600 p-[1.5px] shadow-lg shadow-emerald-500/20">
+              <div className="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center">
+                <span className="font-extrabold text-base tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-sky-400">
+                  AFH
+                </span>
+              </div>
+            </div>
+          </Link>
+          <h1 className="text-2xl font-bold tracking-tight text-white">
+            Admin CMS Portal
+          </h1>
+          <p className="text-xs text-slate-400 mt-1">
+            Masuk untuk mengelola seluruh konten dan media portfolio
+          </p>
+        </div>
+
+        {/* Login Card */}
+        <div className="glass-panel p-8 rounded-3xl border border-slate-700/80 shadow-2xl backdrop-blur-xl">
+          {error && (
+            <div className="mb-6 p-4 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-400 text-xs flex items-start gap-2.5 animate-in fade-in">
+              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+              <span>{error}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                Alamat Email Admin
+              </label>
+              <div className="relative">
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="admin@afhanan.dev"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-100 placeholder:text-slate-500 transition-colors"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                Password
+              </label>
+              <div className="relative">
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••••••"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-100 placeholder:text-slate-500 transition-colors"
+                />
+              </div>
+            </div>
+
+            {/* Quick Demo Credentials Info */}
+            <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 text-[11px] text-slate-400 space-y-1">
+              <div className="flex items-center gap-1.5 text-emerald-400 font-semibold font-mono">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Kredensial Default:</span>
+              </div>
+              <p>Email: <code className="text-slate-200">admin@afhanan.dev</code></p>
+              <p>Password: <code className="text-slate-200">AdminHanan2026!</code></p>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 text-white text-xs font-bold tracking-wide shadow-lg shadow-emerald-500/25 transition-all hover:shadow-xl hover:shadow-emerald-500/35 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Memverifikasi Autentikasi...</span>
+                </>
+              ) : (
+                <>
+                  <span>Masuk ke Dashboard</span>
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
+            </button>
+          </form>
+
+          <div className="mt-6 pt-4 border-t border-slate-800 text-center">
+            <Link
+              href="/"
+              className="text-xs text-slate-400 hover:text-emerald-400 transition-colors"
+            >
+              ← Kembali ke Halaman Portfolio Publik
+            </Link>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}

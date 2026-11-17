@@ -1,0 +1,612 @@
+{
+  "admin_user": {
+    "id": "admin-1",
+    "email": "admin@afhanan.dev",
+    "password_hash": "$2b$10$5v.C82CVfXEnfK.KbmO0vep3qqvHb3Pt0fm/VQ0fSnYmZ5Uex4HXm",
+    "name": "Abdul Rasyid Fadhilah Hanan",
+    "role": "Super Admin"
+  },
+  "profile": {
+    "id": "profile-1",
+    "name": "Abdul Rasyid Fadhilah Hanan",
+    "titles": [
+      "Industrial Engineering Student",
+      "HSE & Safety Technology Enthusiast",
+      "AI & Computer Vision Developer",
+      "Full-Stack Web Developer",
+      "UI/UX Designer"
+    ],
+    "bio": "Mahasiswa S1 Teknik Industri Universitas Telkom Purwokerto dengan minat mendalam pada Industrial Engineering, Health, Safety and Environment (HSE), Manufacturing Automation, Artificial Intelligence, dan Web Development.",
+    "about_text": "Memiliki pengalaman dalam analisis proses industri, pengembangan prototipe pemantauan keselamatan kerja berbasis Computer Vision, serta perancangan dashboard interaktif berbasis web. Berkomitmen menjembatani prinsip keteknikan industri dengan teknologi digital modern untuk menciptakan sistem kerja yang lebih aman, efisien, dan produktif.",
+    "email": "abdulrasyidhanan@gmail.com",
+    "phone": "+62 812-3456-7890",
+    "whatsapp": "6281234567890",
+    "location": "Purwokerto, Jawa Tengah, Indonesia",
+    "university": "Universitas Telkom Purwokerto",
+    "major": "S1 Teknik Industri",
+    "gpa": "3.65",
+    "education_period": "2024 – Sekarang",
+    "highschool": "SMA Negeri 1 Baturraden",
+    "highschool_period": "2021 – 2024",
+    "avatar_url": "/images/profile-hanan.jpg",
+    "resume_url": "/docs/CV_Abdul_Rasyid_Fadhilah_Hanan.pdf",
+    "branding_statement": "Bridging Industrial Engineering, Safety Innovation, and Technology.",
+    "stats": {
+      "projects_count": 8,
+      "achievements_count": 4,
+      "experience_years": 2,
+      "organizations_count": 5
+    }
+  },
+  "projects": [
+    {
+      "id": "proj-1",
+      "slug": "prodsens-smart-factory-ai-iot",
+      "title": "PRODSENS — Sistem Monitoring Real-Time Lini Produksi Terpadu Berbasis IoT & Computer Vision",
+      "category": "Artificial Intelligence & Computer Vision",
+      "description": "Sistem monitoring lini produksi terpadu berbasis IoT dan Computer Vision untuk mendeteksi bottleneck dan meningkatkan Overall Equipment Effectiveness (OEE) pada industri manufaktur Smart Factory.",
+      "full_content": "PRODSENS (Production Sensor & AI Vision) dikembangkan sebagai solusi integratif dalam mentransformasikan lantai pabrik tradisional menuju Smart Factory. Sistem ini mengombinasikan sensor IoT industri (kecepatan jalur, vibrasi, temperatur) dengan pemrosesan video berkecepatan tinggi menggunakan algoritma YOLOv8 dan OpenCV.\n\nKeunggulan Utama:\n1. Deteksi bottleneck visual dan stoppage lini kerja secara otomatis dalam hitungan milidetik.\n2. Perhitungan Overall Equipment Effectiveness (OEE), Availability, Performance, dan Quality secara real-time.\n3. Integrasi dashboard visual untuk operator dan supervisor lini produksi.\n4. Meraih Juara 1 Tingkat Nasional pada Industrial National Paper Competition (INPC) 2026.",
+      "technologies": [
+        "Python",
+        "YOLOv8",
+        "OpenCV",
+        "IoT ESP32",
+        "Next.js",
+        "Tailwind CSS",
+        "FastAPI"
+      ],
+      "thumbnail_url": "/images/prodsens-thumb.jpg",
+      "gallery_urls": [
+        "/images/prodsens-thumb.jpg",
+        "/images/prodsens-architecture.jpg"
+      ],
+      "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "pdf_url": "/docs/PRODSENS_Paper_INPC2026.pdf",
+      "project_url": "https://prodsens-demo.afhanan.dev",
+      "github_url": "https://github.com/afhanan/prodsens-iot-vision",
+      "date": "2026-02",
+      "featured": true,
+      "published": true,
+      "order": 1,
+      "created_at": "2026-02-15T08:00:00.000Z",
+      "updated_at": "2026-02-15T08:00:00.000Z"
+    },
+    {
+      "id": "proj-2",
+      "slug": "visionsafe-ppe-detection-system",
+      "title": "VisionSafe — Automated HSE PPE Compliance Monitoring System",
+      "category": "Health, Safety & Environment",
+      "description": "Prototipe Computer Vision untuk pemantauan kepatuhan Alat Pelindung Diri (APD: Helm, Rompi Reflektif, Kacamata Safety) di area operasional berisiko tinggi secara otomatis.",
+      "full_content": "VisionSafe dirancang berlandaskan pengalaman internship di divisi Safety PT Sinar Tambang Arthalestari (Semen Bima). Menggunakan model deep learning convolutional neural network teroptimasi untuk mengidentifikasi kepatuhan APD para pekerja di zona berbahaya pabrik semen dan area pertambangan.\n\nFitur:\n- Deteksi multiobjek secara real-time: hardhat, safety vest, safety boots, safety glasses.\n- Alarm instan & log pelanggaran K3 otomatis ke server telegram/webhook.\n- Dashboard statistik kepatuhan HSE harian dan mingguan.",
+      "technologies": [
+        "Python",
+        "PyTorch",
+        "YOLOv8",
+        "OpenCV",
+        "SQLite",
+        "Flask API"
+      ],
+      "thumbnail_url": "/images/visionsafe-thumb.jpg",
+      "gallery_urls": [
+        "/images/visionsafe-thumb.jpg"
+      ],
+      "video_url": "",
+      "pdf_url": "",
+      "project_url": "",
+      "github_url": "https://github.com/afhanan/visionsafe-ppe-detection",
+      "date": "2025-11",
+      "featured": true,
+      "published": true,
+      "order": 2,
+      "created_at": "2025-11-20T10:00:00.000Z",
+      "updated_at": "2025-11-20T10:00:00.000Z"
+    },
+    {
+      "id": "proj-3",
+      "slug": "railway-rolling-stock-inspection-dashboard",
+      "title": "DepoTrack — Railway Rolling Stock Maintenance Dashboard",
+      "category": "Web Development",
+      "description": "Aplikasi dashboard inspeksi dan pemeliharaan sarana kereta api terintegrasi untuk mendukung proses preventive maintenance di UPT Depo Sarana Kereta.",
+      "full_content": "Dikembangkan berdasarkan observasi alur kerja pemeliharaan sarana di UPT Depo Sarana Kereta PT Kereta Api Indonesia (Persero) DAOP 5 Purwokerto. Membantu teknisi mendokumentasikan checklist harian komponen boggie, pengereman, dan kelistrikan kereta dengan antarmuka yang cepat dan responsif.",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Prisma",
+        "Chart.js"
+      ],
+      "thumbnail_url": "/images/railway-dashboard-thumb.jpg",
+      "gallery_urls": [
+        "/images/railway-dashboard-thumb.jpg"
+      ],
+      "video_url": "",
+      "pdf_url": "",
+      "project_url": "",
+      "github_url": "https://github.com/afhanan/depotrack-railway-maintenance",
+      "date": "2025-08",
+      "featured": true,
+      "published": true,
+      "order": 3,
+      "created_at": "2025-08-10T09:00:00.000Z",
+      "updated_at": "2025-08-10T09:00:00.000Z"
+    },
+    {
+      "id": "proj-4",
+      "slug": "manufacturing-line-vsm-optimization",
+      "title": "Industrial Line Balancing & VSM Waste Elimination Analysis",
+      "category": "Industrial Engineering",
+      "description": "Analisis Value Stream Mapping (VSM), diagram Fishbone (Ishikawa), dan Pareto Analysis untuk mereduksi Non-Value Added activities pada lini perakitan manufaktur.",
+      "full_content": "Proyek perancangan teknik industri yang berfokus pada efisiensi lini manufaktur. Melalui observasi waktu siklus (cycle time) dan waktu standar (takt time), dilakukan balancing lintas stasiun kerja sehingga lead time produksi terpangkas hingga 18% dan efisiensi lintasan meningkat signifikan.",
+      "technologies": [
+        "Value Stream Mapping",
+        "Pareto Analysis",
+        "Fishbone Diagram",
+        "Autodesk Inventor",
+        "Microsoft Excel"
+      ],
+      "thumbnail_url": "/images/vsm-thumb.jpg",
+      "gallery_urls": [
+        "/images/vsm-thumb.jpg"
+      ],
+      "video_url": "",
+      "pdf_url": "",
+      "project_url": "",
+      "github_url": "",
+      "date": "2025-05",
+      "featured": false,
+      "published": true,
+      "order": 4,
+      "created_at": "2025-05-18T14:00:00.000Z",
+      "updated_at": "2025-05-18T14:00:00.000Z"
+    }
+  ],
+  "project_categories": [
+    {
+      "id": "cat-1",
+      "name": "Artificial Intelligence & Computer Vision",
+      "slug": "ai-computer-vision",
+      "order": 1
+    },
+    {
+      "id": "cat-2",
+      "name": "Health, Safety & Environment",
+      "slug": "hse",
+      "order": 2
+    },
+    {
+      "id": "cat-3",
+      "name": "Industrial Engineering",
+      "slug": "industrial-engineering",
+      "order": 3
+    },
+    {
+      "id": "cat-4",
+      "name": "Web Development",
+      "slug": "web-development",
+      "order": 4
+    },
+    {
+      "id": "cat-5",
+      "name": "UI/UX Design",
+      "slug": "ui-ux-design",
+      "order": 5
+    },
+    {
+      "id": "cat-6",
+      "name": "Creative Projects",
+      "slug": "creative-projects",
+      "order": 6
+    }
+  ],
+  "experiences": [
+    {
+      "id": "exp-1",
+      "company": "PT Sinar Tambang Arthalestari (Semen Bima)",
+      "role": "Safety & HSE Division Intern",
+      "department": "Departemen HRGASH",
+      "division": "Divisi Safety",
+      "period": "2025",
+      "description": "Terlibat aktif dalam program Health, Safety, and Environment (HSE) pada lingkungan operasional industri semen terpadu.",
+      "responsibilities": [
+        "Membantu pelaksanaan inspeksi keselamatan berkala pada area pabrik dan pertambangan.",
+        "Menganalisis kepatuhan penggunaan Alat Pelindung Diri (APD) dan identifikasi potensi bahaya kerja (HIRADC).",
+        "Menyusun materi sosialisasi safety briefing harian (Toolbox Meeting) bagi teknisi dan operator.",
+        "Menginisiasi konsep otomasi pemantauan kepatuhan safety menggunakan Computer Vision."
+      ],
+      "logo_url": "/images/semen-bima-logo.png",
+      "documentation_urls": [
+        "/images/exp-semen-bima-1.jpg"
+      ],
+      "order": 1,
+      "created_at": "2025-10-01T00:00:00.000Z"
+    },
+    {
+      "id": "exp-2",
+      "company": "PT Kereta Api Indonesia (Persero) DAOP 5 Purwokerto",
+      "role": "Rolling Stock Maintenance Intern",
+      "department": "UPT Depo Sarana Kereta",
+      "division": "Pemeliharaan Sarana Kereta",
+      "period": "2025",
+      "description": "Mengikuti kegiatan pemeliharaan periodik dan pengecekan kelaikan sarana kereta api di Depo Sarana Purwokerto.",
+      "responsibilities": [
+        "Melakukan observasi alur kerja preventive dan corrective maintenance pada gerbong dan rangkaian kereta.",
+        "Mempelajari sistem mekanik boggie, sistem pengereman udara tekan, dan kelistrikan sarana.",
+        "Membantu pencatatan riwayat kerusakan komponen dan analisis bottleneck perawatan.",
+        "Merancang prototipe antarmuka checklist digital untuk memudahkan verifikasi teknisi."
+      ],
+      "logo_url": "/images/kai-logo.png",
+      "documentation_urls": [
+        "/images/exp-kai-1.jpg"
+      ],
+      "order": 2,
+      "created_at": "2025-07-01T00:00:00.000Z"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "ach-1",
+      "title": "Juara 1 Tingkat Nasional — Industrial National Paper Competition (INPC) 2026",
+      "competition_name": "Industrial National Paper Competition (INPC) 2026",
+      "level": "Tingkat Nasional",
+      "rank": "Juara 1 (First Place)",
+      "organizer": "Badan Kerjasama Penyelenggara Pendidikan Tinggi Teknik Industri (BKSTI) / Forum Ilmiah Nasional",
+      "year": "2026",
+      "description": "Memperoleh Juara 1 Tingkat Nasional dengan karya berjudul: 'PRODSENS — Sistem Monitoring Real-Time Lini Produksi Terpadu Berbasis IoT dan Kecerdasan Buatan (Computer Vision) untuk Meningkatkan Efektivitas Mesin pada Smart Factory'. Mengungguli puluhan universitas terkemuka di seluruh Indonesia.",
+      "certificate_url": "/images/sertifikat-inpc-2026.jpg",
+      "documentation_urls": [
+        "/images/sertifikat-inpc-2026.jpg",
+        "/images/inpc-presentation.jpg"
+      ],
+      "featured": true,
+      "order": 1,
+      "created_at": "2026-02-20T00:00:00.000Z"
+    }
+  ],
+  "activities": [
+    {
+      "id": "act-1",
+      "title": "Kepala Divisi Media dan Informasi",
+      "organization": "Himpunan Mahasiswa Teknik Industri (HMTI) Telkom University Purwokerto",
+      "role": "Kepala Divisi",
+      "period": "2025 – 2026",
+      "category": "Organisasi",
+      "description": "Memimpin tim media dan branding organisasi dalam memproduksi konten visual, publikasi digital, pengelolaan media sosial resmi, dan perancangan website himpunan.",
+      "documentation_urls": [
+        "/images/org-hmti-medinfo.jpg"
+      ],
+      "order": 1,
+      "created_at": "2025-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "act-2",
+      "title": "Technical Support",
+      "organization": "Komunitas Pusat Prestasi Satria Muda",
+      "role": "Technical Support",
+      "period": "2025 – Sekarang",
+      "category": "Komunitas",
+      "description": "Memberikan pendampingan teknis, digitalisasi sistem manajemen prestasi, dan pembinaan karya ilmiah mahasiswa berbasis teknologi cerdas.",
+      "documentation_urls": [
+        "/images/org-satria-muda.jpg"
+      ],
+      "order": 2,
+      "created_at": "2025-08-01T00:00:00.000Z"
+    },
+    {
+      "id": "act-3",
+      "title": "Koordinator Divisi Publikasi, Dokumentasi, dan Desain",
+      "organization": "Kumpul Akrab Bareng Industri 8.0",
+      "role": "Koordinator PDD",
+      "period": "2025",
+      "category": "Kepanitiaan",
+      "description": "Mengorkestrasi seluruh perancangan identitas visual, aftermovie, booklet acara, serta sistem peliputan langsung event keakraban tahunan mahasiswa teknik industri.",
+      "documentation_urls": [
+        "/images/kabi-8.jpg"
+      ],
+      "order": 3,
+      "created_at": "2025-10-15T00:00:00.000Z"
+    },
+    {
+      "id": "act-4",
+      "title": "Staff Publikasi, Dokumentasi, dan Desain (PDD)",
+      "organization": "Pengabdian Masyarakat HMTI 2025",
+      "role": "Staff PDD",
+      "period": "2025",
+      "category": "Pengabdian Masyarakat",
+      "description": "Mendokumentasikan kegiatan penyuluhan penerapan efisiensi kerja UMKM lokal dan mengelola arsip media kegiatan sosial kemasyarakatan.",
+      "documentation_urls": [
+        "/images/pengmas-hmti.jpg"
+      ],
+      "order": 4,
+      "created_at": "2025-06-20T00:00:00.000Z"
+    },
+    {
+      "id": "act-5",
+      "title": "Staff Media dan Informasi",
+      "organization": "HMTI Kabinet Dharmasamarthya",
+      "role": "Staff Medinfo",
+      "period": "2024 – 2025",
+      "category": "Organisasi",
+      "description": "Berkontribusi dalam pembuatan feed grafis, reel dokumentasi, dan poster sosialisasi agenda kegiatan kemahasiswaan.",
+      "documentation_urls": [
+        "/images/hmti-dharmasamarthya.jpg"
+      ],
+      "order": 5,
+      "created_at": "2024-11-01T00:00:00.000Z"
+    }
+  ],
+  "skills": [
+    {
+      "id": "sk-1",
+      "name": "Value Stream Mapping (VSM)",
+      "category": "Industrial Engineering",
+      "proficiency": "Expert",
+      "icon": "Workflow",
+      "order": 1
+    },
+    {
+      "id": "sk-2",
+      "name": "Pareto Analysis & Fishbone",
+      "category": "Industrial Engineering",
+      "proficiency": "Expert",
+      "icon": "BarChart3",
+      "order": 2
+    },
+    {
+      "id": "sk-3",
+      "name": "OEE & Stoppage Analysis",
+      "category": "Industrial Engineering",
+      "proficiency": "Advanced",
+      "icon": "Gauge",
+      "order": 3
+    },
+    {
+      "id": "sk-4",
+      "name": "HIRADC & Safety Risk Assessment",
+      "category": "Industrial Engineering",
+      "proficiency": "Advanced",
+      "icon": "ShieldCheck",
+      "order": 4
+    },
+    {
+      "id": "sk-5",
+      "name": "Autodesk Inventor",
+      "category": "Industrial Engineering",
+      "proficiency": "Competent",
+      "icon": "Box",
+      "order": 5
+    },
+    {
+      "id": "sk-6",
+      "name": "Python",
+      "category": "AI & Computer Vision",
+      "proficiency": "Expert",
+      "icon": "Terminal",
+      "order": 6
+    },
+    {
+      "id": "sk-7",
+      "name": "YOLOv8 & Object Detection",
+      "category": "AI & Computer Vision",
+      "proficiency": "Expert",
+      "icon": "Scan",
+      "order": 7
+    },
+    {
+      "id": "sk-8",
+      "name": "OpenCV",
+      "category": "AI & Computer Vision",
+      "proficiency": "Advanced",
+      "icon": "Eye",
+      "order": 8
+    },
+    {
+      "id": "sk-9",
+      "name": "Face Recognition & Biometrics",
+      "category": "AI & Computer Vision",
+      "proficiency": "Advanced",
+      "icon": "UserCheck",
+      "order": 9
+    },
+    {
+      "id": "sk-10",
+      "name": "Full-Stack Web Development",
+      "category": "Web Development",
+      "proficiency": "Expert",
+      "icon": "Globe",
+      "order": 10
+    },
+    {
+      "id": "sk-11",
+      "name": "Next.js & React",
+      "category": "Web Development",
+      "proficiency": "Advanced",
+      "icon": "Code2",
+      "order": 11
+    },
+    {
+      "id": "sk-12",
+      "name": "Tailwind CSS & Modern UI",
+      "category": "Web Development",
+      "proficiency": "Expert",
+      "icon": "Palette",
+      "order": 12
+    },
+    {
+      "id": "sk-13",
+      "name": "REST API & PostgreSQL/Prisma",
+      "category": "Web Development",
+      "proficiency": "Advanced",
+      "icon": "Database",
+      "order": 13
+    },
+    {
+      "id": "sk-14",
+      "name": "Graphic Design (Corel/Ai/Photoshop)",
+      "category": "Design & Multimedia",
+      "proficiency": "Expert",
+      "icon": "PenTool",
+      "order": 14
+    },
+    {
+      "id": "sk-15",
+      "name": "Video Editing (Premiere/CapCut)",
+      "category": "Design & Multimedia",
+      "proficiency": "Advanced",
+      "icon": "Video",
+      "order": 15
+    },
+    {
+      "id": "sk-16",
+      "name": "UI/UX Prototyping (Figma)",
+      "category": "Design & Multimedia",
+      "proficiency": "Advanced",
+      "icon": "Layout",
+      "order": 16
+    },
+    {
+      "id": "sk-17",
+      "name": "Antigravity IDE & VS Code",
+      "category": "Productivity Tools",
+      "proficiency": "Expert",
+      "icon": "Laptop",
+      "order": 17
+    },
+    {
+      "id": "sk-18",
+      "name": "OBS Studio (Live & Record)",
+      "category": "Productivity Tools",
+      "proficiency": "Expert",
+      "icon": "Tv",
+      "order": 18
+    },
+    {
+      "id": "sk-19",
+      "name": "Microsoft Office & Excel Advanced",
+      "category": "Productivity Tools",
+      "proficiency": "Expert",
+      "icon": "FileSpreadsheet",
+      "order": 19
+    },
+    {
+      "id": "sk-20",
+      "name": "Kepemimpinan & Kolaborasi Tim",
+      "category": "Soft Skills",
+      "proficiency": "Expert",
+      "icon": "Users",
+      "order": 20
+    },
+    {
+      "id": "sk-21",
+      "name": "Public Speaking & Presentasi Ilmiah",
+      "category": "Soft Skills",
+      "proficiency": "Expert",
+      "icon": "Mic",
+      "order": 21
+    }
+  ],
+  "skill_categories": [
+    {
+      "id": "sc-1",
+      "name": "Industrial Engineering",
+      "slug": "industrial-engineering",
+      "order": 1
+    },
+    {
+      "id": "sc-2",
+      "name": "AI & Computer Vision",
+      "slug": "ai-computer-vision",
+      "order": 2
+    },
+    {
+      "id": "sc-3",
+      "name": "Web Development",
+      "slug": "web-development",
+      "order": 3
+    },
+    {
+      "id": "sc-4",
+      "name": "Design & Multimedia",
+      "slug": "design-multimedia",
+      "order": 4
+    },
+    {
+      "id": "sc-5",
+      "name": "Productivity Tools",
+      "slug": "productivity-tools",
+      "order": 5
+    },
+    {
+      "id": "sc-6",
+      "name": "Soft Skills",
+      "slug": "soft-skills",
+      "order": 6
+    }
+  ],
+  "messages": [
+    {
+      "name": "Ir. Budi Wicaksono",
+      "email": "budi@industri-smart.id",
+      "subject": "Konsultasi Implementasi Smart Factory",
+      "message": "Halo Mas Hanan, kami tertarik mendiskusikan implementasi Computer Vision pada lini produksi.",
+      "id": "msg-1794912027959",
+      "is_read": false,
+      "created_at": "2026-11-17T10:40:27.959Z"
+    },
+    {
+      "id": "msg-1",
+      "name": "Dr. Ir. Hendra Prasetyo",
+      "email": "hendra.prasetyo@industry-forum.id",
+      "subject": "Undangan Pembicara Guest Lecture: AI & Safety Innovation",
+      "message": "Halo Mas Abdul Rasyid Hanan. Kami sangat terkesan dengan pencapaian karya PRODSENS pada INPC 2026. Kami ingin mengundang Mas Hanan sebagai narasumber guest lecture mengenai implementasi Computer Vision pada industri manufaktur.",
+      "is_read": false,
+      "created_at": "2026-03-01T10:15:00.000Z"
+    }
+  ],
+  "website_settings": {
+    "site_title": "Abdul Rasyid Fadhilah Hanan — Portfolio & Showcase",
+    "site_description": "Personal Portfolio & Showcase of Abdul Rasyid Fadhilah Hanan. Industrial Engineering Student at Telkom University Purwokerto, Safety Tech Enthusiast, AI & Web Developer.",
+    "meta_keywords": "Abdul Rasyid Fadhilah Hanan, Industrial Engineering, Telkom University Purwokerto, HSE Safety, Computer Vision, YOLOv8, Full-Stack Developer, PRODSENS",
+    "favicon_url": "/favicon.ico",
+    "social_links": {
+      "github": "https://github.com/afhanan",
+      "linkedin": "https://linkedin.com/in/abdul-rasyid-fadhilah-hanan",
+      "instagram": "https://instagram.com/afhanan_",
+      "email": "abdulrasyidhanan@gmail.com",
+      "whatsapp": "https://wa.me/6281234567890"
+    },
+    "footer_text": "© 2026 Abdul Rasyid Fadhilah Hanan. All rights reserved. Crafted with precision & passion.",
+    "cv_url": "/docs/CV_Abdul_Rasyid_Fadhilah_Hanan.pdf"
+  },
+  "media_library": [
+    {
+      "id": "med-1",
+      "name": "profile-hanan.jpg",
+      "original_name": "foto_profil_hanan_formal.jpg",
+      "url": "/images/profile-hanan.jpg",
+      "file_type": "image",
+      "size": 245000,
+      "mime_type": "image/jpeg",
+      "created_at": "2026-01-10T12:00:00.000Z"
+    },
+    {
+      "id": "med-2",
+      "name": "sertifikat-inpc-2026.jpg",
+      "original_name": "Sertifikat_Juara1_INPC2026_Abdul_Rasyid_Fadhilah_Hanan.jpg",
+      "url": "/images/sertifikat-inpc-2026.jpg",
+      "file_type": "image",
+      "size": 482000,
+      "mime_type": "image/jpeg",
+      "created_at": "2026-02-20T14:30:00.000Z"
+    },
+    {
+      "id": "med-3",
+      "name": "CV_Abdul_Rasyid_Fadhilah_Hanan.pdf",
+      "original_name": "Curriculum_Vitae_Abdul_Rasyid_Fadhilah_Hanan_2026.pdf",
+      "url": "/docs/CV_Abdul_Rasyid_Fadhilah_Hanan.pdf",
+      "file_type": "pdf",
+      "size": 312000,
+      "mime_type": "application/pdf",
+      "created_at": "2026-02-01T09:00:00.000Z"
+    }
+  ]
+}
