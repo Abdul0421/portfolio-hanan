@@ -252,7 +252,7 @@ export default function AdminProjectsManagement() {
       )}
 
       {/* Projects Table */}
-      <div className="glass-panel rounded-3xl overflow-hidden border border-slate-800">
+      <div className="rounded-3xl overflow-hidden bg-[#111624] border border-white/10 shadow-lg">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-900/80 border-b border-slate-800 text-slate-400 font-mono uppercase tracking-wider">
@@ -350,7 +350,7 @@ export default function AdminProjectsManagement() {
       {/* Project Form Modal */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-          <div className="relative w-full max-w-3xl my-8 glass-panel rounded-3xl border border-slate-700 p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto">
+          <div className="relative w-full max-w-3xl my-8 rounded-3xl bg-[#111624] border border-white/10 p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto shadow-2xl">
             
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <h2 className="text-lg font-bold text-white">
@@ -577,3 +577,4 @@ export default function AdminProjectsManagement() {
     </div>
   );
 }
+

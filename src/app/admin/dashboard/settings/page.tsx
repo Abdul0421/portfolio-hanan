@@ -132,7 +132,7 @@ export default function AdminSettingsManagement() {
       <form onSubmit={handleSave} className="space-y-6">
         
         {/* SEO & Meta */}
-        <div className="glass-panel p-6 rounded-3xl space-y-4">
+        <div className="p-6 rounded-3xl bg-[#111624] border border-white/10 space-y-4 shadow-lg">
           <h2 className="text-sm font-bold text-white uppercase font-mono tracking-wider text-emerald-400 flex items-center gap-2">
             <Globe className="w-4 h-4" />
             <span>SEO & Metadata Mesin Pencari</span>
@@ -176,7 +176,7 @@ export default function AdminSettingsManagement() {
         </div>
 
         {/* Social Media Links */}
-        <div className="glass-panel p-6 rounded-3xl space-y-4">
+        <div className="p-6 rounded-3xl bg-[#111624] border border-white/10 space-y-4 shadow-lg">
           <h2 className="text-sm font-bold text-white uppercase font-mono tracking-wider text-emerald-400 flex items-center gap-2">
             <Share2 className="w-4 h-4" />
             <span>Tautan Media Sosial & Kontak</span>
@@ -230,7 +230,7 @@ export default function AdminSettingsManagement() {
         </div>
 
         {/* Footer & General */}
-        <div className="glass-panel p-6 rounded-3xl space-y-4">
+        <div className="p-6 rounded-3xl bg-[#111624] border border-white/10 space-y-4 shadow-lg">
           <h2 className="text-sm font-bold text-white uppercase font-mono tracking-wider text-emerald-400">
             Footer & Hak Cipta
           </h2>
@@ -264,3 +264,4 @@ export default function AdminSettingsManagement() {
     </div>
   );
 }
+

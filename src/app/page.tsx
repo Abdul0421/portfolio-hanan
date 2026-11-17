@@ -20,6 +20,8 @@ export default async function HomePage() {
   const skills = db.getSkills();
   const skillCategories = db.getSkillCategories();
   const settings = db.getWebsiteSettings();
+  const contactSettings = db.getContactSettings();
+  const headings = db.getSectionHeadings();
 
   return (
     <div className="relative min-h-screen bg-grid-pattern selection:bg-emerald-500/25 selection:text-emerald-300">
@@ -27,13 +29,13 @@ export default async function HomePage() {
       
       <main className="flex-1">
         <HeroSection profile={profile} settings={settings} />
-        <AboutSection profile={profile} />
-        <ExperienceSection experiences={experiences} />
-        <ProjectsSection projects={projects} categories={projectCategories} />
-        <AchievementsSection achievements={achievements} />
-        <ActivitiesSection activities={activities} />
-        <SkillsSection skills={skills} categories={skillCategories} />
-        <ContactSection profile={profile} settings={settings} />
+        <AboutSection profile={profile} headings={headings.about} />
+        <ExperienceSection experiences={experiences} headings={headings.experience} />
+        <ProjectsSection projects={projects} categories={projectCategories} headings={headings.projects} />
+        <AchievementsSection achievements={achievements} headings={headings.achievements} />
+        <ActivitiesSection activities={activities} headings={headings.activities} />
+        <SkillsSection skills={skills} categories={skillCategories} headings={headings.skills} />
+        <ContactSection profile={profile} settings={settings} contactSettings={contactSettings} />
       </main>
 
       <Footer profile={profile} settings={settings} />

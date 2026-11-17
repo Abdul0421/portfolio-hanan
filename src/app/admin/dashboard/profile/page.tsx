@@ -149,7 +149,7 @@ export default function AdminProfileManagement() {
       <form onSubmit={handleSave} className="space-y-8">
         
         {/* Media & Avatar Section */}
-        <div className="glass-panel p-6 rounded-3xl space-y-6">
+        <div className="p-6 rounded-3xl bg-[#111624] border border-white/10 space-y-6 shadow-lg">
           <h2 className="text-sm font-bold text-white uppercase font-mono tracking-wider text-emerald-400">
             Foto Profil & Berkas CV
           </h2>
@@ -207,7 +207,7 @@ export default function AdminProfileManagement() {
         </div>
 
         {/* Basic Personal Info */}
-        <div className="glass-panel p-6 rounded-3xl space-y-5">
+        <div className="p-6 rounded-3xl bg-[#111624] border border-white/10 space-y-5 shadow-lg">
           <h2 className="text-sm font-bold text-white uppercase font-mono tracking-wider text-emerald-400">
             Identitas Utama & Gelar Profesional
           </h2>
@@ -260,7 +260,7 @@ export default function AdminProfileManagement() {
         </div>
 
         {/* Bio & Summary */}
-        <div className="glass-panel p-6 rounded-3xl space-y-5">
+        <div className="p-6 rounded-3xl bg-[#111624] border border-white/10 space-y-5 shadow-lg">
           <h2 className="text-sm font-bold text-white uppercase font-mono tracking-wider text-emerald-400">
             Deskripsi Profil & Summary
           </h2>
@@ -291,7 +291,7 @@ export default function AdminProfileManagement() {
         </div>
 
         {/* Education Details */}
-        <div className="glass-panel p-6 rounded-3xl space-y-5">
+        <div className="p-6 rounded-3xl bg-[#111624] border border-white/10 space-y-5 shadow-lg">
           <h2 className="text-sm font-bold text-white uppercase font-mono tracking-wider text-emerald-400">
             Pendidikan Akademik
           </h2>
@@ -352,3 +352,4 @@ export default function AdminProfileManagement() {
     </div>
   );
 }
+

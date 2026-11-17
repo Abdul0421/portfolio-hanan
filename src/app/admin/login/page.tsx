@@ -41,7 +41,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-[#0a0f18] text-slate-100 bg-grid-pattern relative overflow-hidden">
+    <div className="dark min-h-screen flex items-center justify-center p-4 bg-[#0a0f18] text-slate-100 bg-grid-pattern relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -51,10 +51,8 @@ export default function AdminLoginPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2.5 group mb-3">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 via-sky-500 to-indigo-600 p-[1.5px] shadow-lg shadow-emerald-500/20">
-              <div className="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center">
-                <span className="font-extrabold text-base tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-sky-400">
-                  AFH
-                </span>
+              <div className="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform">
+                <ShieldCheck className="w-6 h-6" />
               </div>
             </div>
           </Link>
@@ -67,7 +65,7 @@ export default function AdminLoginPage() {
         </div>
 
         {/* Login Card */}
-        <div className="glass-panel p-8 rounded-3xl border border-slate-700/80 shadow-2xl backdrop-blur-xl">
+        <div className="p-8 rounded-3xl bg-[#111624] border border-white/10 shadow-2xl">
           {error && (
             <div className="mb-6 p-4 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-400 text-xs flex items-start gap-2.5 animate-in fade-in">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
@@ -153,3 +151,4 @@ export default function AdminLoginPage() {
     </div>
   );
 }
+

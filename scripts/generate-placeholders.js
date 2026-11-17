@@ -7,7 +7,7 @@ const docsDir = path.join(__dirname, '..', 'public', 'docs');
 if (!fs.existsSync(imgDir)) fs.mkdirSync(imgDir, { recursive: true });
 if (!fs.existsSync(docsDir)) fs.mkdirSync(docsDir, { recursive: true });
 
-function createSvg(text, subtitle, bg1 = '#0f172a', bg2 = '#0284c7', iconText = 'AFH') {
+function createSvg(text, subtitle, bg1 = '#0f172a', bg2 = '#0284c7', iconText = 'PORTFOLIO') {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
   <defs>
     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -28,16 +28,20 @@ function createSvg(text, subtitle, bg1 = '#0f172a', bg2 = '#0284c7', iconText = 
 }
 
 const assets = [
-  { file: 'profile-hanan.jpg', svg: createSvg('Abdul Rasyid Fadhilah Hanan', 'Industrial Engineering & Tech Enthusiast', '#064e3b', '#047857', 'AFH') },
+  { file: 'profile-hanan.jpg', svg: createSvg('Abdul Rasyid Fadhilah Hanan', 'Industrial Engineering & Tech Enthusiast', '#064e3b', '#047857', 'ARFH') },
   { file: 'prodsens-thumb.jpg', svg: createSvg('PRODSENS Smart Factory', 'IoT & Computer Vision Real-Time Monitoring', '#091e3a', '#0369a1', 'PRODSENS') },
   { file: 'prodsens-architecture.jpg', svg: createSvg('PRODSENS System Architecture', 'Sensors, Edge Processing & YOLOv8 Detection', '#0f172a', '#1e293b', 'IOT-AI') },
   { file: 'visionsafe-thumb.jpg', svg: createSvg('VisionSafe PPE Detection', 'HSE Automated Compliance Vision System', '#14532d', '#15803d', 'HSE') },
   { file: 'railway-dashboard-thumb.jpg', svg: createSvg('DepoTrack Railway', 'Rolling Stock Maintenance Dashboard', '#1e1b4b', '#4338ca', 'KAI') },
   { file: 'vsm-thumb.jpg', svg: createSvg('Industrial Line Balancing', 'Value Stream Mapping & Waste Reduction', '#312e81', '#3730a3', 'VSM') },
   { file: 'sertifikat-inpc-2026.jpg', svg: createSvg('JUARA 1 NASIONAL', 'Industrial National Paper Competition 2026', '#78350f', '#d97706', '★ 1st') },
+  { file: 'semen-bima-logo.svg', svg: createSvg('Semen Bima', 'PT Sinar Tambang Arthalestari', '#1e293b', '#334155', 'BIMA') },
   { file: 'semen-bima-logo.png', svg: createSvg('Semen Bima', 'PT Sinar Tambang Arthalestari', '#1e293b', '#334155', 'BIMA') },
+  { file: 'kai-logo.svg', svg: createSvg('PT KAI (Persero)', 'DAOP 5 Purwokerto', '#1e3a8a', '#2563eb', 'KAI') },
   { file: 'kai-logo.png', svg: createSvg('PT KAI (Persero)', 'DAOP 5 Purwokerto', '#1e3a8a', '#2563eb', 'KAI') },
-  { file: 'placeholder-project.jpg', svg: createSvg('Project Showcase', 'Engineering & Technology Project', '#0f172a', '#1e293b', 'AFH') }
+  { file: 'exp-semen-bima-1.jpg', svg: createSvg('Inspeksi Safety & HIRADC', 'Dokumentasi Semen Bima', '#064e3b', '#047857', 'HSE') },
+  { file: 'exp-kai-1.jpg', svg: createSvg('Pemeliharaan Sarana Kereta', 'Dokumentasi UPT Depo KAI', '#1e1b4b', '#4338ca', 'KAI') },
+  { file: 'placeholder-project.jpg', svg: createSvg('Project Showcase', 'Engineering & Technology Project', '#0f172a', '#1e293b', 'PROJECT') }
 ];
 
 assets.forEach(a => {
@@ -64,3 +68,4 @@ fs.writeFileSync(path.join(docsDir, 'CV_Abdul_Rasyid_Fadhilah_Hanan.pdf'), dummy
 fs.writeFileSync(path.join(docsDir, 'PRODSENS_Paper_INPC2026.pdf'), dummyCvText);
 
 console.log('Placeholders created successfully.');
+

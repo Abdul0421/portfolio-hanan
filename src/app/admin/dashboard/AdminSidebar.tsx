@@ -11,6 +11,7 @@ import {
   Trophy,
   Users2,
   Wrench,
+  Mail,
   Image as ImageIcon,
   MessageSquare,
   Settings,
@@ -19,6 +20,7 @@ import {
   Menu,
   X,
   Shield,
+  Type,
 } from "lucide-react";
 import { SessionPayload } from "@/lib/auth";
 
@@ -34,11 +36,13 @@ export default function AdminSidebar({ session }: AdminSidebarProps) {
   const navItems = [
     { label: "Overview", href: "/admin/dashboard", icon: LayoutDashboard },
     { label: "Kelola Profil", href: "/admin/dashboard/profile", icon: User },
+    { label: "Judul & Teks Section", href: "/admin/dashboard/sections", icon: Type },
     { label: "Proyek & Karya", href: "/admin/dashboard/projects", icon: FolderGit2 },
     { label: "Pengalaman Kerja", href: "/admin/dashboard/experiences", icon: Briefcase },
     { label: "Prestasi & Award", href: "/admin/dashboard/achievements", icon: Trophy },
     { label: "Organisasi & Kegiatan", href: "/admin/dashboard/activities", icon: Users2 },
     { label: "Keahlian & Skills", href: "/admin/dashboard/skills", icon: Wrench },
+    { label: "Kelola Kontak", href: "/admin/dashboard/contact", icon: Mail },
     { label: "Media Library", href: "/admin/dashboard/media", icon: ImageIcon },
     { label: "Pesan Masuk", href: "/admin/dashboard/messages", icon: MessageSquare },
     { label: "Pengaturan Website", href: "/admin/dashboard/settings", icon: Settings },
@@ -58,9 +62,9 @@ export default function AdminSidebar({ session }: AdminSidebarProps) {
     <>
       {/* Mobile Header Bar */}
       <div className="md:hidden flex items-center justify-between p-4 bg-slate-900 border-b border-slate-800 sticky top-0 z-40">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center font-bold text-xs text-white">
-            AFH
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
+            <Shield className="w-4 h-4" />
           </div>
           <span className="font-bold text-sm text-white">CMS Admin</span>
         </div>
@@ -75,7 +79,7 @@ export default function AdminSidebar({ session }: AdminSidebarProps) {
 
       {/* Sidebar container */}
       <aside
-        className={`fixed md:sticky top-0 left-0 z-50 h-screen w-64 bg-slate-950/95 backdrop-blur-xl border-r border-slate-800/80 flex flex-col justify-between p-4 transition-transform duration-300 ${
+        className={`fixed md:sticky top-0 left-0 z-50 h-screen w-64 bg-[#0b101c] border-r border-white/10 flex flex-col justify-between p-4 transition-transform duration-300 shadow-xl ${
           mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         }`}
       >
@@ -84,10 +88,8 @@ export default function AdminSidebar({ session }: AdminSidebarProps) {
           {/* Brand Header */}
           <div className="flex items-center justify-between px-2 pt-2">
             <Link href="/admin/dashboard" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 via-sky-500 to-indigo-600 p-[1.5px] shadow-sm">
-                <div className="w-full h-full bg-slate-900 rounded-[9px] flex items-center justify-center font-bold text-xs text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-sky-400">
-                  AFH
-                </div>
+              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-xs">
+                <Shield className="w-4.5 h-4.5" />
               </div>
               <div>
                 <span className="font-bold text-sm text-white block">CMS Portal</span>
@@ -164,3 +166,4 @@ export default function AdminSidebar({ session }: AdminSidebarProps) {
     </>
   );
 }
+

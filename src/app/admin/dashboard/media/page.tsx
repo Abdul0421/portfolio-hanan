@@ -174,8 +174,8 @@ export default function AdminMediaLibrary() {
 
       {/* Media Grid */}
       {filteredMedia.length === 0 ? (
-        <div className="glass-panel p-12 text-center rounded-3xl">
-          <p className="text-xs text-slate-500">
+        <div className="p-12 text-center rounded-3xl bg-[#111624] border border-white/10 shadow-lg">
+          <p className="text-xs text-slate-400">
             Tidak ada media yang ditemukan. Silakan unggah berkas baru menggunakan tombol di atas.
           </p>
         </div>
@@ -184,7 +184,7 @@ export default function AdminMediaLibrary() {
           {filteredMedia.map((item) => (
             <div
               key={item.id}
-              className="glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all flex flex-col group"
+              className="rounded-2xl overflow-hidden bg-[#111624] border border-white/10 hover:border-white/20 transition-all flex flex-col group shadow-lg"
             >
               {/* Preview Box */}
               <div className="relative aspect-square w-full bg-slate-950 flex items-center justify-center overflow-hidden">
@@ -260,3 +260,4 @@ export default function AdminMediaLibrary() {
     </div>
   );
 }
+

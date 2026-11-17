@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, FileDown, Shield, Code, Cpu } from "lucide-react";
+import { Menu, X, FileDown } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 interface NavbarProps {
@@ -27,10 +27,10 @@ export default function Navbar({ cvUrl = "/docs/CV_Abdul_Rasyid_Fadhilah_Hanan.p
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 20);
 
-      const sections = navLinks.map((link) => link.href.substring(1));
-      const scrollPosition = window.scrollY + 120;
+      const sections = ["home", ...navLinks.map((link) => link.href.substring(1))];
+      const scrollPosition = window.scrollY + 140;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
@@ -65,41 +65,29 @@ export default function Navbar({ cvUrl = "/docs/CV_Abdul_Rasyid_Fadhilah_Hanan.p
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "glass-nav py-3 shadow-md"
+          ? "bg-white/90 dark:bg-[#090d16]/90 backdrop-blur-md border-b border-slate-200 dark:border-white/10 py-3 shadow-xs"
           : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo with Initials AFH */}
+          
+          {/* Executive Brand Wordmark */}
           <Link
             href="#home"
             onClick={(e) => handleNavClick(e, "#home")}
-            className="flex items-center gap-2.5 group"
+            className="flex flex-col group py-0.5"
           >
-            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 via-sky-500 to-indigo-600 p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-sm shadow-emerald-500/20">
-              <div className="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center">
-                <span className="font-extrabold text-sm tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-sky-400">
-                  AFH
-                </span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-sm tracking-tight text-slate-900 dark:text-slate-100 group-hover:text-emerald-500 transition-colors">
-                Hanan
-              </span>
-              <span className="text-[10px] font-mono tracking-widest uppercase text-slate-500 dark:text-slate-400 -mt-1 flex items-center gap-1">
-                <span>IE</span>
-                <span className="text-emerald-500">•</span>
-                <span>AI</span>
-                <span className="text-sky-500">•</span>
-                <span>HSE</span>
-              </span>
-            </div>
+            <span className="font-bold font-formal text-base tracking-tight text-slate-900 dark:text-white transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
+              Abdul Rasyid F. H.
+            </span>
+            <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-medium">
+              Industrial Engineering
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 p-1.5 rounded-full bg-slate-100/80 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 text-xs font-medium">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/80 dark:bg-[#111726]/90 border border-slate-200/80 dark:border-white/10 text-xs font-semibold font-ui backdrop-blur-md shadow-xs">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -107,10 +95,10 @@ export default function Navbar({ cvUrl = "/docs/CV_Abdul_Rasyid_Fadhilah_Hanan.p
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`px-3.5 py-1.5 rounded-full transition-all duration-200 ${
+                  className={`px-3 py-1.5 rounded-full transition-all duration-200 ${
                     isActive
-                      ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-semibold shadow-xs"
-                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/60"
+                      ? "bg-emerald-600 dark:bg-emerald-500 text-white font-semibold shadow-xs"
+                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5"
                   }`}
                 >
                   {link.label}
@@ -119,30 +107,28 @@ export default function Navbar({ cvUrl = "/docs/CV_Abdul_Rasyid_Fadhilah_Hanan.p
             })}
           </nav>
 
-          {/* Right Action Buttons */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Right Action Bar */}
+          <div className="flex items-center gap-2 sm:gap-3 font-ui">
             <ThemeToggle />
 
+            {/* Download CV button (visible on tablet & desktop) */}
             <a
               href={cvUrl}
               target="_blank"
               rel="noopener noreferrer"
               download
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-sm shadow-emerald-500/25 transition-all duration-200 hover:shadow-md hover:shadow-emerald-500/35 hover:-translate-y-0.5 active:translate-y-0"
+              className="hidden sm:inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white shadow-md shadow-emerald-500/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
               <FileDown className="w-3.5 h-3.5" />
               <span>Download CV</span>
             </a>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex sm:hidden items-center gap-2">
-            <ThemeToggle />
+            {/* Mobile & Tablet Hamburger Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
               aria-label="Buka navigasi menu"
-              className="p-2 rounded-lg bg-slate-200/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200"
+              className="lg:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -150,10 +136,10 @@ export default function Navbar({ cvUrl = "/docs/CV_Abdul_Rasyid_Fadhilah_Hanan.p
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile & Tablet Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="sm:hidden glass-panel mt-2 mx-4 p-4 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 animate-in fade-in slide-in-from-top-4 duration-200">
-          <nav className="flex flex-col gap-1">
+        <div className="lg:hidden mt-3 mx-4 p-5 rounded-2xl bg-white dark:bg-[#0e1422] border border-slate-200 dark:border-white/10 shadow-2xl animate-in fade-in slide-in-from-top-3 duration-200">
+          <nav className="flex flex-col gap-1.5">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -163,30 +149,30 @@ export default function Navbar({ cvUrl = "/docs/CV_Abdul_Rasyid_Fadhilah_Hanan.p
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                     isActive
-                      ? "bg-emerald-500/20 text-emerald-500 dark:text-emerald-400 font-semibold"
-                      : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60"
+                      ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-semibold"
+                      : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5"
                   }`}
                 >
                   {link.label}
                 </a>
               );
             })}
-            <div className="pt-3 mt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
+            <div className="pt-3 mt-2 border-t border-slate-200 dark:border-white/10 flex flex-col gap-2">
               <a
                 href={cvUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 download
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500 text-white shadow-md shadow-emerald-500/20"
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold bg-emerald-600 dark:bg-emerald-500 text-white sm:hidden"
               >
                 <FileDown className="w-4 h-4" />
-                <span>Download CV (Curriculum Vitae)</span>
+                <span>Unduh Curriculum Vitae (PDF)</span>
               </a>
               <Link
                 href="/admin/login"
-                className="w-full text-center py-2 text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
+                className="w-full text-center py-2 text-xs text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400"
               >
-                Portal CMS Admin →
+                Masuk ke Admin Portal CMS →
               </Link>
             </div>
           </nav>

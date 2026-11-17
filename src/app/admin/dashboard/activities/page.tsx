@@ -191,7 +191,7 @@ export default function AdminActivitiesManagement() {
         {activities.map((act) => (
           <div
             key={act.id}
-            className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-3.5 hover:border-indigo-500/40 transition-colors flex flex-col justify-between"
+            className="p-6 rounded-3xl bg-[#111624] border border-white/10 space-y-3.5 hover:border-indigo-500/40 transition-colors flex flex-col justify-between shadow-lg"
           >
             <div className="space-y-2">
               <div className="flex items-center justify-between gap-2">
@@ -233,7 +233,7 @@ export default function AdminActivitiesManagement() {
       {/* Modal Form */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-          <div className="relative w-full max-w-2xl my-8 glass-panel rounded-3xl border border-slate-700 p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto">
+          <div className="relative w-full max-w-2xl my-8 rounded-3xl bg-[#111624] border border-white/10 p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto shadow-2xl">
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <h2 className="text-lg font-bold text-white">
                 {editingAct ? "Edit Organisasi / Aktivitas" : "Tambah Organisasi / Aktivitas"}
@@ -352,3 +352,4 @@ export default function AdminActivitiesManagement() {
     </div>
   );
 }
+

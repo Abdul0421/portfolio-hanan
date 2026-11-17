@@ -204,7 +204,7 @@ export default function AdminExperiencesManagement() {
         {experiences.map((exp) => (
           <div
             key={exp.id}
-            className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4 hover:border-slate-700 transition-colors"
+            className="p-6 rounded-3xl bg-[#111624] border border-white/10 space-y-4 hover:border-white/20 transition-colors shadow-lg"
           >
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
@@ -268,7 +268,7 @@ export default function AdminExperiencesManagement() {
       {/* Modal Form */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-          <div className="relative w-full max-w-2xl my-8 glass-panel rounded-3xl border border-slate-700 p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto">
+          <div className="relative w-full max-w-2xl my-8 rounded-3xl bg-[#111624] border border-white/10 p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto shadow-2xl">
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <h2 className="text-lg font-bold text-white">
                 {editingExp ? "Edit Pengalaman" : "Tambah Pengalaman"}
@@ -409,3 +409,4 @@ export default function AdminExperiencesManagement() {
     </div>
   );
 }
+

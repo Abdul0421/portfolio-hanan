@@ -11,12 +11,21 @@ import { Project, ProjectCategory } from "@/lib/types";
 interface ProjectsSectionProps {
   projects: Project[];
   categories: ProjectCategory[];
+  headings?: {
+    badge: string;
+    title: string;
+    subtitle: string;
+  };
 }
 
-export default function ProjectsSection({ projects, categories }: ProjectsSectionProps) {
+export default function ProjectsSection({ projects, categories, headings }: ProjectsSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+
+  const badgeText = headings?.badge || "Portfolio Showcase";
+  const titleText = headings?.title || "Karya, Proyek & Riset Terpilih";
+  const subtitleText = headings?.subtitle || "Implementasi nyata Computer Vision, otomasi industri, dan aplikasi web berbasis data.";
 
   const filterCategories = [
     { id: "all", name: "All Projects" },
@@ -39,21 +48,21 @@ export default function ProjectsSection({ projects, categories }: ProjectsSectio
   });
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-slate-950/20 dark:bg-slate-950/40">
+    <section id="projects" className="py-24 relative overflow-hidden bg-slate-50/60 dark:bg-[#0a0f19] border-t border-slate-200/80 dark:border-white/5 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="flex flex-col items-center text-center mb-12">
           <MotionReveal>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase font-ui tracking-wider mb-3">
               <FolderGit2 className="w-3.5 h-3.5" />
-              <span>Portfolio Showcase</span>
+              <span>{badgeText}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Karya, Proyek & Riset Terpilih
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-formal text-slate-900 dark:text-white tracking-tight">
+              {titleText}
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl">
-              Menampilkan karya rekayasa sistem terintegrasi, model Computer Vision, dan solusi digital yang siap diimplementasikan di dunia nyata.
+            <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl font-formal">
+              {subtitleText}
             </p>
           </MotionReveal>
         </div>
@@ -72,10 +81,10 @@ export default function ProjectsSection({ projects, categories }: ProjectsSectio
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.name === "All Projects" ? "All" : cat.name)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
                     isSelected
-                      ? "bg-emerald-500 text-white shadow-md shadow-emerald-500/20 font-semibold"
-                      : "bg-slate-200/70 dark:bg-slate-900/60 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-800"
+                      ? "bg-emerald-600 dark:bg-emerald-500 text-white shadow-xs"
+                      : "bg-white dark:bg-[#111726] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 shadow-2xs"
                   }`}
                 >
                   {cat.name}
@@ -92,15 +101,15 @@ export default function ProjectsSection({ projects, categories }: ProjectsSectio
               placeholder="Cari proyek atau teknologi..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-full bg-slate-100 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-700/80 text-xs text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:border-emerald-500 transition-colors"
+              className="w-full pl-10 pr-4 py-2 rounded-xl bg-white dark:bg-[#111726] border border-slate-200 dark:border-white/10 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-hidden focus:border-emerald-500 shadow-2xs transition-colors"
             />
           </div>
         </div>
 
         {/* Projects Grid */}
         {filteredProjects.length === 0 ? (
-          <div className="p-12 text-center glass-panel rounded-3xl">
-            <p className="text-sm text-slate-400">
+          <div className="p-12 text-center rounded-3xl bg-white dark:bg-[#111726] border border-slate-200 dark:border-white/10 shadow-xs">
+            <p className="text-sm text-slate-500 dark:text-slate-400">
               Tidak ada proyek yang sesuai dengan kriteria filter atau pencarian Anda.
             </p>
           </div>
@@ -110,10 +119,10 @@ export default function ProjectsSection({ projects, categories }: ProjectsSectio
               <MotionReveal key={project.id} delay={0.1 * ((index % 3) + 1)}>
                 <div
                   onClick={() => setActiveProject(project)}
-                  className="glass-panel rounded-3xl overflow-hidden hover:border-emerald-500/50 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5 flex flex-col h-full group cursor-pointer"
+                  className="rounded-3xl overflow-hidden bg-white dark:bg-[#111726] border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 shadow-xs hover:shadow-xl dark:shadow-none transition-all duration-300 hover:-translate-y-1.5 flex flex-col h-full group cursor-pointer"
                 >
                   {/* Thumbnail Container */}
-                  <div className="relative aspect-video w-full overflow-hidden bg-slate-950">
+                  <div className="relative aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-950">
                     <Image
                       src={project.thumbnail_url || "/images/placeholder-project.jpg"}
                       alt={project.title}
@@ -121,40 +130,32 @@ export default function ProjectsSection({ projects, categories }: ProjectsSectio
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       unoptimized
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 dark:from-[#111726] via-transparent to-transparent opacity-80" />
 
                     {/* Category & Featured Badge */}
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                      <span className="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-slate-900/85 backdrop-blur-md text-emerald-400 border border-slate-700">
+                      <span className="px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-white/95 dark:bg-[#0e1422]/90 backdrop-blur-md text-emerald-700 dark:text-emerald-400 border border-slate-200 dark:border-white/10 shadow-xs">
                         {project.category}
                       </span>
                       {project.featured && (
-                        <span className="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center gap-1 backdrop-blur-md">
-                          <Sparkles className="w-3 h-3 text-amber-400" />
+                        <span className="px-2 py-0.5 text-[10px] font-semibold rounded-md bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-500/40 flex items-center gap-1 backdrop-blur-md">
+                          <Sparkles className="w-3 h-3 text-amber-500 dark:text-amber-400" />
                           <span>Featured</span>
                         </span>
                       )}
-                    </div>
-
-                    {/* Quick View Button Hover overlay */}
-                    <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-500 text-white text-xs font-semibold shadow-lg">
-                        <Eye className="w-3.5 h-3.5" />
-                        <span>Lihat Detail Proyek</span>
-                      </span>
                     </div>
                   </div>
 
                   {/* Card Content */}
                   <div className="p-6 flex flex-col flex-1 justify-between space-y-4">
                     <div className="space-y-2">
-                      <span className="text-[11px] font-mono text-slate-400">
+                      <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
                         {project.date}
                       </span>
-                      <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors line-clamp-2">
+                      <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-2">
                         {project.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-normal">
                         {project.description}
                       </p>
                     </div>
@@ -165,20 +166,20 @@ export default function ProjectsSection({ projects, categories }: ProjectsSectio
                         {project.technologies.slice(0, 4).map((tech) => (
                           <span
                             key={tech}
-                            className="px-2 py-0.5 text-[10px] font-medium rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-sky-300 border border-slate-200 dark:border-slate-700/80"
+                            className="px-2 py-0.5 text-[10px] font-medium rounded-md bg-slate-100 dark:bg-[#182133] text-slate-700 dark:text-sky-300 border border-slate-200/80 dark:border-white/5"
                           >
                             {tech}
                           </span>
                         ))}
                         {project.technologies.length > 4 && (
-                          <span className="px-1.5 py-0.5 text-[10px] font-medium text-slate-400">
+                          <span className="px-1.5 py-0.5 text-[10px] font-medium text-slate-500 dark:text-slate-400">
                             +{project.technologies.length - 4} more
                           </span>
                         )}
                       </div>
 
                       {/* Card Footer Action Links */}
-                      <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-emerald-500 group-hover:text-emerald-400">
+                      <div className="pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400">
                         <span className="inline-flex items-center gap-1">
                           Detail Spesifikasi
                           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -190,7 +191,7 @@ export default function ProjectsSection({ projects, categories }: ProjectsSectio
                               href={project.project_url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-1.5 rounded-lg text-slate-400 hover:text-emerald-400 transition-colors"
+                              className="p-1.5 rounded-lg text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors"
                               title="Live Demo"
                             >
                               <ExternalLink className="w-4 h-4" />
@@ -201,7 +202,7 @@ export default function ProjectsSection({ projects, categories }: ProjectsSectio
                               href={project.github_url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-1.5 rounded-lg text-slate-400 hover:text-white transition-colors"
+                              className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
                               title="GitHub Repository"
                             >
                               <GithubIcon className="w-4 h-4" />

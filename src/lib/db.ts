@@ -13,6 +13,8 @@ import {
   SkillCategory,
   Message,
   WebsiteSettings,
+  ContactSettings,
+  SectionHeadings,
   MediaItem,
   AdminUser,
 } from "./types";
@@ -325,6 +327,120 @@ export const db = {
     return data.website_settings;
   },
 
+  // CONTACT SETTINGS & CHANNELS
+  getContactSettings(): ContactSettings {
+    const data = ensureDbFile();
+    if (!data.contact_settings) {
+      data.contact_settings = {
+        section_badge: "Get In Touch",
+        section_title: "Mari Berkolaborasi & Terhubung",
+        section_subtitle: "Have a project in mind? Let's build something meaningful together.",
+        box_title: "Informasi Kontak",
+        box_description: "Terbuka untuk diskusi proyek teknik industri, pengembangan model Computer Vision, pembuatan website/dashboard, maupun permohonan narasumber.",
+        email: data.profile.email || "abdulrasyidhanan@gmail.com",
+        whatsapp_number: data.profile.phone || "+62 812-3456-7890",
+        whatsapp_url: data.website_settings?.social_links?.whatsapp || "https://wa.me/6281234567890",
+        linkedin_url: data.website_settings?.social_links?.linkedin || "https://linkedin.com/in/abdul-rasyid-fadhilah-hanan",
+        github_url: data.website_settings?.social_links?.github || "https://github.com/afhanan",
+        instagram_url: data.website_settings?.social_links?.instagram || "https://instagram.com/afhanan_",
+        location: data.profile.location || "Purwokerto, Jawa Tengah, Indonesia",
+        form_title: "Kirim Pesan Langsung",
+        form_subtitle: "Pesan Anda akan otomatis terarsip ke sistem dashboard admin dan mendapat respon secepatnya.",
+      };
+      saveDb(data);
+    }
+    return data.contact_settings;
+  },
+  updateContactSettings(updates: Partial<ContactSettings>): ContactSettings {
+    const data = ensureDbFile();
+    const current = this.getContactSettings();
+    const updated = { ...current, ...updates };
+    data.contact_settings = updated;
+
+    // Sync relevant fields to profile and website_settings
+    if (updates.email) {
+      data.profile.email = updates.email;
+      if (data.website_settings?.social_links) data.website_settings.social_links.email = updates.email;
+    }
+    if (updates.whatsapp_number) {
+      data.profile.phone = updates.whatsapp_number;
+    }
+    if (updates.whatsapp_url && data.website_settings?.social_links) {
+      data.website_settings.social_links.whatsapp = updates.whatsapp_url;
+    }
+    if (updates.linkedin_url && data.website_settings?.social_links) {
+      data.website_settings.social_links.linkedin = updates.linkedin_url;
+    }
+    if (updates.github_url && data.website_settings?.social_links) {
+      data.website_settings.social_links.github = updates.github_url;
+    }
+    if (updates.instagram_url && data.website_settings?.social_links) {
+      data.website_settings.social_links.instagram = updates.instagram_url;
+    }
+    if (updates.location) {
+      data.profile.location = updates.location;
+    }
+
+    saveDb(data);
+    return updated;
+  },
+
+  // SECTION HEADINGS & TITLES
+  getSectionHeadings(): SectionHeadings {
+    const data = ensureDbFile();
+    if (!data.section_headings) {
+      data.section_headings = {
+        about: {
+          badge: "About Me",
+          title: "Profil & Rekam Jejak Akademik",
+          subtitle: "Mengintegrasikan prinsip keteknikan industri dengan rekayasa kecerdasan buatan untuk sistem produksi yang aman, terukur, dan efisien.",
+        },
+        experience: {
+          badge: "Career & Internship",
+          title: "Pengalaman Profesional & Industri",
+          subtitle: "Pengalaman magang langsung pada operasional pabrik semen dan sarana perkeretaapian nasional.",
+        },
+        projects: {
+          badge: "Portfolio Showcase",
+          title: "Karya, Proyek & Riset Terpilih",
+          subtitle: "Implementasi nyata Computer Vision, otomasi industri, dan aplikasi web berbasis data.",
+        },
+        achievements: {
+          badge: "Honors & Awards",
+          title: "Prestasi & Penghargaan",
+          subtitle: "Pengakuan atas riset aplikatif, penulisan karya ilmiah bereputasi, dan inovasi teknologi industri.",
+        },
+        activities: {
+          badge: "Leadership & Involvement",
+          title: "Organisasi & Kepemimpinan",
+          subtitle: "Pengalaman aktif dalam tata kelola organisasi kemahasiswaan, perancangan publikasi digital, dan pengabdian sosial.",
+        },
+        skills: {
+          badge: "Competencies & Skills",
+          title: "Keahlian Teknis & Domain Industri",
+          subtitle: "Penguasaan metodologi analisis proses industri, algoritma Computer Vision, dan engineering perangkat lunak.",
+        },
+      };
+      saveDb(data);
+    }
+    return data.section_headings;
+  },
+  updateSectionHeadings(updates: Partial<SectionHeadings>): SectionHeadings {
+    const data = ensureDbFile();
+    const current = this.getSectionHeadings();
+    const updated: SectionHeadings = {
+      about: { ...current.about, ...(updates.about || {}) },
+      experience: { ...current.experience, ...(updates.experience || {}) },
+      projects: { ...current.projects, ...(updates.projects || {}) },
+      achievements: { ...current.achievements, ...(updates.achievements || {}) },
+      activities: { ...current.activities, ...(updates.activities || {}) },
+      skills: { ...current.skills, ...(updates.skills || {}) },
+    };
+    data.section_headings = updated;
+    saveDb(data);
+    return updated;
+  },
+
   // MEDIA LIBRARY
   getMediaLibrary(): MediaItem[] {
     const data = ensureDbFile();
@@ -365,3 +481,4 @@ export const db = {
     return true;
   },
 };
+

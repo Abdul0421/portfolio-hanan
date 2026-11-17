@@ -119,10 +119,10 @@ export default function AdminMessagesManagement() {
 
       {/* Two Column Inbox Layout */}
       {messages.length === 0 ? (
-        <div className="glass-panel p-16 text-center rounded-3xl">
-          <Mail className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-          <p className="text-sm font-semibold text-slate-300">Belum Ada Pesan Masuk</p>
-          <p className="text-xs text-slate-500 mt-1">
+        <div className="p-16 text-center rounded-3xl bg-[#111624] border border-white/10 shadow-lg">
+          <Mail className="w-12 h-12 text-slate-500 mx-auto mb-3" />
+          <p className="text-sm font-semibold text-slate-200">Belum Ada Pesan Masuk</p>
+          <p className="text-xs text-slate-400 mt-1">
             Setiap pesan yang dikirim melalui formulir kontak publik akan muncul di sini.
           </p>
         </div>
@@ -140,10 +140,10 @@ export default function AdminMessagesManagement() {
                   onClick={() => handleSelectMessage(msg)}
                   className={`p-4 rounded-2xl border transition-all cursor-pointer ${
                     isSelected
-                      ? "bg-slate-800 border-emerald-500/60 shadow-lg"
+                      ? "bg-[#182133] border-emerald-500/60 shadow-lg"
                       : !msg.is_read
                       ? "bg-emerald-500/10 border-emerald-500/30 hover:bg-emerald-500/15"
-                      : "bg-slate-900/60 border-slate-800 hover:bg-slate-900"
+                      : "bg-[#111624] border-white/10 hover:bg-[#141b2b]"
                   }`}
                 >
                   <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1">
@@ -175,7 +175,7 @@ export default function AdminMessagesManagement() {
           {/* Active Message Reading Pane (Right Column) */}
           <div className="lg:col-span-7">
             {activeMessage ? (
-              <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
+              <div className="p-6 sm:p-8 rounded-3xl bg-[#111624] border border-white/10 space-y-6 shadow-lg">
                 
                 {/* Message Header */}
                 <div className="flex items-start justify-between gap-4 pb-6 border-b border-slate-800">
@@ -267,3 +267,4 @@ export default function AdminMessagesManagement() {
     </div>
   );
 }
+

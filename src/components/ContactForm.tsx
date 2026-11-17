@@ -59,14 +59,14 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {status.type === "success" && (
-        <div className="p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-sm flex items-start gap-3 animate-in fade-in">
+        <div className="p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-sm flex items-start gap-3 animate-in fade-in">
           <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
           <span>{status.message}</span>
         </div>
       )}
 
       {status.type === "error" && (
-        <div className="p-4 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-400 text-sm flex items-start gap-3 animate-in fade-in">
+        <div className="p-4 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-700 dark:text-rose-400 text-sm flex items-start gap-3 animate-in fade-in">
           <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
           <span>{status.message}</span>
         </div>
@@ -74,8 +74,8 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-slate-400 mb-1.5">
-            Nama Lengkap <span className="text-emerald-400">*</span>
+          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Nama Lengkap <span className="text-emerald-600 dark:text-emerald-400">*</span>
           </label>
           <input
             type="text"
@@ -84,13 +84,13 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             placeholder="Misal: Budi Santoso"
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-900/60 dark:bg-slate-900/80 border border-slate-700/60 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-100 placeholder:text-slate-500 transition-colors"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-[#0e1422] border border-slate-200 dark:border-white/10 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors shadow-2xs"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-400 mb-1.5">
-            Alamat Email <span className="text-emerald-400">*</span>
+          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Alamat Email <span className="text-emerald-600 dark:text-emerald-400">*</span>
           </label>
           <input
             type="email"
@@ -99,13 +99,13 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             placeholder="nama@email.com"
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-900/60 dark:bg-slate-900/80 border border-slate-700/60 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-100 placeholder:text-slate-500 transition-colors"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-[#0e1422] border border-slate-200 dark:border-white/10 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors shadow-2xs"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-slate-400 mb-1.5">
+        <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
           Subjek Pesan
         </label>
         <input
@@ -114,13 +114,13 @@ export default function ContactForm() {
           value={formData.subject}
           onChange={handleChange}
           placeholder="Kolaborasi Proyek / Undangan Seminar / Diskusi"
-          className="w-full px-4 py-2.5 rounded-xl bg-slate-900/60 dark:bg-slate-900/80 border border-slate-700/60 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-100 placeholder:text-slate-500 transition-colors"
+          className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-[#0e1422] border border-slate-200 dark:border-white/10 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors shadow-2xs"
         />
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-slate-400 mb-1.5">
-          Pesan <span className="text-emerald-400">*</span>
+        <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+          Pesan <span className="text-emerald-600 dark:text-emerald-400">*</span>
         </label>
         <textarea
           name="message"
@@ -129,14 +129,14 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           placeholder="Tuliskan pesan atau detail kebutuhan proyek Anda di sini..."
-          className="w-full px-4 py-2.5 rounded-xl bg-slate-900/60 dark:bg-slate-900/80 border border-slate-700/60 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-100 placeholder:text-slate-500 transition-colors resize-y"
+          className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-[#0e1422] border border-slate-200 dark:border-white/10 focus:border-emerald-500 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors resize-y shadow-2xs"
         />
       </div>
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 text-white text-sm font-semibold shadow-lg shadow-emerald-500/25 transition-all duration-200 hover:shadow-xl hover:shadow-emerald-500/35 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 disabled:opacity-50 text-white text-sm font-semibold shadow-md shadow-emerald-500/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
       >
         {loading ? (
           <>

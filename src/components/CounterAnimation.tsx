@@ -66,3 +66,4 @@ export default function CounterAnimation({
     </span>
   );
 }
+

@@ -140,6 +140,56 @@ export interface WebsiteSettings {
   cv_url: string;
 }
 
+export interface ContactSettings {
+  section_badge: string;
+  section_title: string;
+  section_subtitle: string;
+  box_title: string;
+  box_description: string;
+  email: string;
+  whatsapp_number: string;
+  whatsapp_url: string;
+  linkedin_url: string;
+  github_url: string;
+  instagram_url: string;
+  location: string;
+  form_title: string;
+  form_subtitle: string;
+}
+
+export interface SectionHeadings {
+  about: {
+    badge: string;
+    title: string;
+    subtitle: string;
+  };
+  experience: {
+    badge: string;
+    title: string;
+    subtitle: string;
+  };
+  projects: {
+    badge: string;
+    title: string;
+    subtitle: string;
+  };
+  achievements: {
+    badge: string;
+    title: string;
+    subtitle: string;
+  };
+  activities: {
+    badge: string;
+    title: string;
+    subtitle: string;
+  };
+  skills: {
+    badge: string;
+    title: string;
+    subtitle: string;
+  };
+}
+
 export interface MediaItem {
   id: string;
   name: string;
@@ -171,5 +221,8 @@ export interface DatabaseSchema {
   skill_categories: SkillCategory[];
   messages: Message[];
   website_settings: WebsiteSettings;
+  contact_settings?: ContactSettings;
+  section_headings?: SectionHeadings;
   media_library: MediaItem[];
 }
+

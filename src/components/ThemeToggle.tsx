@@ -9,34 +9,29 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem("af_theme") as "dark" | "light" | null;
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme = saved || (systemPrefersDark ? "dark" : "dark"); // Default dark mode
-    setTheme(initialTheme);
-    applyTheme(initialTheme);
+    const isDark = document.documentElement.classList.contains("dark");
+    setTheme(isDark ? "dark" : "light");
   }, []);
 
-  const applyTheme = (t: "dark" | "light") => {
-    const root = document.documentElement;
-    if (t === "dark") {
-      root.classList.add("dark");
-      root.setAttribute("data-theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      root.setAttribute("data-theme", "light");
-    }
-  };
-
   const toggleTheme = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    localStorage.setItem("af_theme", next);
-    applyTheme(next);
+    const isCurrentlyDark = document.documentElement.classList.contains("dark");
+    const nextTheme = isCurrentlyDark ? "light" : "dark";
+    
+    setTheme(nextTheme);
+    try {
+      localStorage.setItem("af_theme", nextTheme);
+    } catch {}
+
+    if (nextTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   };
 
   if (!mounted) {
     return (
-      <div className={`w-9 h-9 rounded-full bg-slate-800/40 border border-slate-700/50 ${className}`} />
+      <div className={`w-9 h-9 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-white/10 ${className}`} />
     );
   }
 
@@ -46,17 +41,16 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
       type="button"
       title={`Beralih ke mode ${theme === "dark" ? "terang" : "gelap"}`}
       aria-label="Toggle theme"
-      className={`p-2 rounded-full transition-all duration-300 relative group
-        ${
-          theme === "dark"
-            ? "bg-slate-800/80 text-amber-300 hover:bg-slate-700/90 border border-slate-700/60"
-            : "bg-slate-100 text-slate-800 hover:bg-slate-200 border border-slate-300"
-        } ${className}`}
+      className={`p-2.5 rounded-xl transition-all duration-200 cursor-pointer border shadow-xs ${
+        theme === "dark"
+          ? "bg-[#161e30] text-amber-300 hover:bg-[#1d273e] border-white/10"
+          : "bg-white text-slate-700 hover:bg-slate-100 border-slate-200 hover:text-slate-900"
+      } ${className}`}
     >
       {theme === "dark" ? (
-        <Sun className="w-4 h-4 transition-transform group-hover:rotate-45" />
+        <Sun className="w-4 h-4 transition-transform hover:rotate-45 text-amber-300" />
       ) : (
-        <Moon className="w-4 h-4 transition-transform group-hover:-rotate-12" />
+        <Moon className="w-4 h-4 transition-transform hover:-rotate-12 text-slate-700" />
       )}
     </button>
   );

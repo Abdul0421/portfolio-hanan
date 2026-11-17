@@ -24,12 +24,12 @@
     "location": "Purwokerto, Jawa Tengah, Indonesia",
     "university": "Universitas Telkom Purwokerto",
     "major": "S1 Teknik Industri",
-    "gpa": "3.65",
+    "gpa": "3.68",
     "education_period": "2024 – Sekarang",
     "highschool": "SMA Negeri 1 Baturraden",
     "highschool_period": "2021 – 2024",
-    "avatar_url": "/images/profile-hanan.jpg",
-    "resume_url": "/docs/CV_Abdul_Rasyid_Fadhilah_Hanan.pdf",
+    "avatar_url": "/uploads/1794912641123_IMG_8117__3__JPG.jpg",
+    "resume_url": "/uploads/1794922062694_CV_Abdul_Rasyid_Fadhilah_Hanan__1_.pdf",
     "branding_statement": "Bridging Industrial Engineering, Safety Innovation, and Technology.",
     "stats": {
       "projects_count": 8,
@@ -213,7 +213,7 @@
         "Menyusun materi sosialisasi safety briefing harian (Toolbox Meeting) bagi teknisi dan operator.",
         "Menginisiasi konsep otomasi pemantauan kepatuhan safety menggunakan Computer Vision."
       ],
-      "logo_url": "/images/semen-bima-logo.png",
+      "logo_url": "/images/semen-bima-logo.svg",
       "documentation_urls": [
         "/images/exp-semen-bima-1.jpg"
       ],
@@ -234,7 +234,7 @@
         "Membantu pencatatan riwayat kerusakan komponen dan analisis bottleneck perawatan.",
         "Merancang prototipe antarmuka checklist digital untuk memudahkan verifikasi teknisi."
       ],
-      "logo_url": "/images/kai-logo.png",
+      "logo_url": "/images/kai-logo.svg",
       "documentation_urls": [
         "/images/exp-kai-1.jpg"
       ],
@@ -245,14 +245,14 @@
   "achievements": [
     {
       "id": "ach-1",
-      "title": "Juara 1 Tingkat Nasional — Industrial National Paper Competition (INPC) 2026",
+      "title": "Juara 1 Tingkat Nasional - Industrial National Paper Competition (INPC) 2026",
       "competition_name": "Industrial National Paper Competition (INPC) 2026",
       "level": "Tingkat Nasional",
       "rank": "Juara 1 (First Place)",
-      "organizer": "Badan Kerjasama Penyelenggara Pendidikan Tinggi Teknik Industri (BKSTI) / Forum Ilmiah Nasional",
+      "organizer": "Himpunan Mahasiswa Teknik Industri Universitas Pancasakti Tegal",
       "year": "2026",
-      "description": "Memperoleh Juara 1 Tingkat Nasional dengan karya berjudul: 'PRODSENS — Sistem Monitoring Real-Time Lini Produksi Terpadu Berbasis IoT dan Kecerdasan Buatan (Computer Vision) untuk Meningkatkan Efektivitas Mesin pada Smart Factory'. Mengungguli puluhan universitas terkemuka di seluruh Indonesia.",
-      "certificate_url": "/images/sertifikat-inpc-2026.jpg",
+      "description": "Memperoleh Juara 1 Tingkat Nasional dengan karya berjudul: 'PRODSENS : Sistem Monitoring Real-Time Lini Produksi Terpadu Berbasis IoT dan Kecerdasan Buatan (Computer Vision) untuk Meningkatkan Efektivitas Mesin pada Smart Factory'. ",
+      "certificate_url": "/uploads/1794920978509_JUARA_PERTAMA__1_.png",
       "documentation_urls": [
         "/images/sertifikat-inpc-2026.jpg",
         "/images/inpc-presentation.jpg"
@@ -441,7 +441,7 @@
     },
     {
       "id": "sk-14",
-      "name": "Graphic Design (Corel/Ai/Photoshop)",
+      "name": "Graphic Design (Canva)",
       "category": "Design & Multimedia",
       "proficiency": "Expert",
       "icon": "PenTool",
@@ -449,19 +449,11 @@
     },
     {
       "id": "sk-15",
-      "name": "Video Editing (Premiere/CapCut)",
+      "name": "Video Editing (CapCut)",
       "category": "Design & Multimedia",
       "proficiency": "Advanced",
       "icon": "Video",
       "order": 15
-    },
-    {
-      "id": "sk-16",
-      "name": "UI/UX Prototyping (Figma)",
-      "category": "Design & Multimedia",
-      "proficiency": "Advanced",
-      "icon": "Layout",
-      "order": 16
     },
     {
       "id": "sk-17",
@@ -544,6 +536,15 @@
   ],
   "messages": [
     {
+      "name": "Tester Netlify",
+      "email": "test@example.com",
+      "subject": "Inquiry Kerjasama Industri",
+      "message": "Halo, saya tertarik dengan implementasi sistem vision PRODSENS.",
+      "id": "msg-1794926358561",
+      "is_read": false,
+      "created_at": "2026-11-17T14:39:18.561Z"
+    },
+    {
       "name": "Ir. Budi Wicaksono",
       "email": "budi@industri-smart.id",
       "subject": "Konsultasi Implementasi Smart Factory",
@@ -579,6 +580,46 @@
   },
   "media_library": [
     {
+      "name": "1794922062694_CV_Abdul_Rasyid_Fadhilah_Hanan__1_.pdf",
+      "original_name": "CV_Abdul_Rasyid_Fadhilah_Hanan (1).pdf",
+      "url": "/uploads/1794922062694_CV_Abdul_Rasyid_Fadhilah_Hanan__1_.pdf",
+      "file_type": "pdf",
+      "size": 192391,
+      "mime_type": "application/pdf",
+      "id": "med-1794922062700",
+      "created_at": "2026-11-17T13:27:42.700Z"
+    },
+    {
+      "name": "1794920978509_JUARA_PERTAMA__1_.png",
+      "original_name": "JUARA PERTAMA (1).png",
+      "url": "/uploads/1794920978509_JUARA_PERTAMA__1_.png",
+      "file_type": "image",
+      "size": 5933691,
+      "mime_type": "image/png",
+      "id": "med-1794920978519",
+      "created_at": "2026-11-17T13:09:38.519Z"
+    },
+    {
+      "name": "1794913001821_CV_Abdul_Rasyid_Fadhilah_Hanan.pdf",
+      "original_name": "CV_Abdul_Rasyid_Fadhilah_Hanan.pdf",
+      "url": "/uploads/1794913001821_CV_Abdul_Rasyid_Fadhilah_Hanan.pdf",
+      "file_type": "pdf",
+      "size": 312,
+      "mime_type": "application/pdf",
+      "id": "med-1794913001825",
+      "created_at": "2026-11-17T10:56:41.825Z"
+    },
+    {
+      "name": "1794912641123_IMG_8117__3__JPG.jpg",
+      "original_name": "IMG_8117 (3).JPG",
+      "url": "/uploads/1794912641123_IMG_8117__3__JPG.jpg",
+      "file_type": "image",
+      "size": 1022956,
+      "mime_type": "image/jpeg",
+      "id": "med-1794912641128",
+      "created_at": "2026-11-17T10:50:41.128Z"
+    },
+    {
       "id": "med-1",
       "name": "profile-hanan.jpg",
       "original_name": "foto_profil_hanan_formal.jpg",
@@ -608,5 +649,53 @@
       "mime_type": "application/pdf",
       "created_at": "2026-02-01T09:00:00.000Z"
     }
-  ]
+  ],
+  "contact_settings": {
+    "section_badge": "Get In Touch",
+    "section_title": "Mari Berkolaborasi & Terhubung",
+    "section_subtitle": "Have a project in mind? Let's build something meaningful together.",
+    "box_title": "Informasi Kontak",
+    "box_description": "Terbuka untuk diskusi proyek teknik industri, pengembangan model Computer Vision, pembuatan website/dashboard, maupun permohonan narasumber.",
+    "email": "abdulrasyidhanan@gmail.com",
+    "whatsapp_number": "+62 812-3456-7890",
+    "whatsapp_url": "https://wa.me/6281234567890",
+    "linkedin_url": "https://linkedin.com/in/abdul-rasyid-fadhilah-hanan",
+    "github_url": "https://github.com/afhanan",
+    "instagram_url": "https://instagram.com/afhanan_",
+    "location": "Purwokerto, Jawa Tengah, Indonesia",
+    "form_title": "Kirim Pesan Langsung",
+    "form_subtitle": "Pesan Anda akan otomatis terarsip ke sistem dashboard admin dan mendapat respon secepatnya."
+  },
+  "section_headings": {
+    "about": {
+      "badge": "About Me",
+      "title": "Profil & Rekam Jejak Akademik",
+      "subtitle": "."
+    },
+    "experience": {
+      "badge": "Career & Internship",
+      "title": "Pengalaman Profesional ",
+      "subtitle": "."
+    },
+    "projects": {
+      "badge": "Portfolio Showcase",
+      "title": "Karya & Proyek ",
+      "subtitle": "."
+    },
+    "achievements": {
+      "badge": "Honors & Awards",
+      "title": "Prestasi & Penghargaan",
+      "subtitle": "."
+    },
+    "activities": {
+      "badge": "Leadership & Involvement",
+      "title": "Organisasi & Kegiatan",
+      "subtitle": "."
+    },
+    "skills": {
+      "badge": "Competencies & Skills",
+      "title": "Keahlian & Kompetensi",
+      "subtitle": "."
+    }
+  }
 }
